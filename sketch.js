@@ -1,50 +1,49 @@
-var moving;
-var Alpha
-var Beta
-var fixed;
+const Engine = Matter.Engine;
+const World= Matter.World;
+const Bodies = Matter.Bodies;
 
-function setup() {
-  createCanvas(800,400);
-   fixed = createSprite(400, 200, 50, 50);
-   moving = createSprite(400,200,50,50);
-   Alpha = createSprite(100,200,50,50);
-   Beta = createSprite(200,200,50,50);
+var engine, world;
+var box1;
+var pig1;
+var log1;
+
+function setup(){
+    var canvas = createCanvas(1200,400);
+    engine = Engine.create();
+    world = engine.world;
+
+    box1 = new Box(700,300,70,70);
+    box2 = new Box(920,300,70,70);
+    pig1 = new Pig(800,300);
+    ground = new Ground(600,height,1200,20)
+    log1 = new Log(800,260,300,PI/2);
+    box3 = new Box(700,240,70,70);
+    box4 = new Box(920,240,70,70);
+    log2 = new Log(800,180,300,PI/2);
+    pig2 = new Pig(800,240);
+    box5 = new Box(800,180,70,70);
+    log3 = new Log(760,150,150,PI/7);
+    log4 = new Log(850,150,150,-PI/7);
+}
+
+function draw(){
+    background(0);
+    Engine.update(engine);
+    console.log(box2.body.position.x);
+    console.log(box2.body.position.y);
+    console.log(box2.body.angle);
+    box1.display();
+    box2.display();
+    box3.display();
+    box4.display();
+    box5.display();
+    pig1.display();
+    pig2.display();
+    log1.display();
+    log2.display();
+    log3.display();
+    log4.display();
+    ground.display();
    
-}
-
-function draw() {
-  background(255,255,255);  
-  moving.x = mouseX;
-  moving.y = mouseY;
-
-if(isTouching(moving,Beta)){
-
- moving.shapeColor = "red";
-Beta.shapeColor = "blue";
-}
-if(isTouching(moving,Alpha)){
   
-  moving.shapeColor = "white";
-Alpha.shapeColor = "black";
-}
-if(isTouching(moving,fixed)){
-
-  moving.shapeColor = "orange";
-fixed.shapeColor = "cyan";
-}
-
-  drawSprites();
-}
-function isTouching(object1,object2){
-  if(object1.x - object2.x<object1.width/2 + object2.width/2 
-    && object2.x - object1.x< object1.width/2 + object2.width/2
-    && object1.y - object2.y< object1.height/2 + object2.height/2
-    && object2.y - object1.y < object1.height/2 + object2.height/2) {
-      return true
-  }
-
-  else{
- return false
-  }
-
 }

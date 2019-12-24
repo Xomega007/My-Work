@@ -3,11 +3,10 @@ const World= Matter.World;
 const Bodies = Matter.Bodies;
 const Constraint = Matter.Constraint;
 
-var constrainedLog
 var engine, world;
 var box1, pig1;
 var backgroundImg,platform;
-var mcslinger;
+var bird, slingShot;
 
 function preload() {
     backgroundImg = loadImage("sprites/bg.png");
@@ -37,16 +36,16 @@ function setup(){
     log4 = new Log(760,120,150, PI/7);
     log5 = new Log(870,120,150, -PI/7);
 
-    bird = new Bird(100,100);
-    log6 = new Log (230,180,80,PI/2);
-mcslinger = new slingy(bird.body,log6.body);
+    bird = new Bird(200,50);
+
+    //log6 = new Log(230,180,80, PI/2);
+    slingshot = new SlingShot(bird.body,{x:200, y:50});
 }
+
 function draw(){
     background(backgroundImg);
     Engine.update(engine);
-    console.log(box2.body.position.x);
-    console.log(box2.body.position.y);
-    console.log(box2.body.angle);
+    //strokeWeight(4);
     box1.display();
     box2.display();
     ground.display();
@@ -64,8 +63,20 @@ function draw(){
 
     bird.display();
     platform.display();
+    //log6.display();
+    slingshot.display();    
+}
+function keyPressed(){
+    if(keyCode == 32){
+        slingshot.attach(bird.body);
+    }
+}
 
-   log6.display();
-   // strokeWeight(3);
-   // line(bird.body.position.x,bird.body.position.y,constrainedLog.body.position.x,constrainedLog.body.position.y);
+function mouseDragged(){
+    Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+}
+
+
+function mouseReleased(){
+    slingshot.fly();
 }

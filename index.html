@@ -1,21 +1,36 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <script src="p5.min.js"></script>
-    <script src="p5.dom.min.js"></script>
-    <script src="p5.sound.min.js"></script>
-    <script src="matter.js"></script>
-    <script src="BaseClass.js"></script>
-    <script src="Ground.js"></script>
-    <script src="Box.js"></script>
-    <script src="Pig.js"></script>
-    <script src="Log.js"></script>
-    <script src="Bird.js"></script>
-    <script src="Slingshot.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
+<html lang="en" dir="ltr">
+  <head>
     <meta charset="utf-8">
-</head>
-<body>
-  <script src="sketch.js"></script>
-</body>
+    <title>Multiplayer Game</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script>
+    <script src="p5.play.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-database.js"></script>
+
+
+    <script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyDgstaIxVhClFV40l0-w7BT0udKtM6D6Ck",
+    authDomain: "car-racing-2b0d3.firebaseapp.com",
+    databaseURL: "https://car-racing-2b0d3.firebaseio.com",
+    projectId: "car-racing-2b0d3",
+    storageBucket: "car-racing-2b0d3.appspot.com",
+    messagingSenderId: "372561779674",
+    appId: "1:372561779674:web:30c6d4e32ca2ca46c9fee3"
+  };
+      firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script src="js/Player.js"></script>
+    <script src="js/Form.js"></script>
+    <script src="js/Game.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+  </head>
+  <body>
+    <script src="sketch.js"></script>
+  </body>
 </html>

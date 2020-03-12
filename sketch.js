@@ -1,44 +1,29 @@
-var canvas, backgroundImage;
+const Engine = Matter.Engine;
+const World= Matter.World;
+const Bodies = Matter.Bodies;
 
-var gameState = 0;
-var playerCount;
-var allPlayers;
-var distance = 0;
-var database;
-
-var form, player, game;
-
-var cars, car1, car2, car3, car4;
-
-var track, car1_img, car2_img, car3_img, car4_img;
-
-function preload(){
-  track = loadImage("../images/track.jpg");
-  car1_img = loadImage("../images/car1.png");
-  car2_img = loadImage("../images/car2.png");
-  car3_img = loadImage("../images/car3.png");
-  car4_img = loadImage("../images/car4.png");
-  ground = loadImage("../images/ground.png");
-}
+var engine, world;
+var box1;
+var box2;
+var box3;
+var ground1;
 
 function setup(){
-  canvas = createCanvas(displayWidth - 20, displayHeight-30);
-  database = firebase.database();
-  game = new Game();
-  game.getState();
-  game.start();
+    var canvas = createCanvas(400,400);
+    engine = Engine.create();
+    world = engine.world;
+
+    box1 = new Box(200,300,50,50);
+    box2 = new Box(100,100,70,70);
+    box3 = new Box(50,100,30,30);
+    ground1 = new Ground(200,380,400,10)
 }
 
-
 function draw(){
-  if(playerCount === 4){
-    game.update(1);
-  }
-  if(gameState === 1){
-    clear();
-    game.play();
-  }
-  if(gameState === 2){
-    game.end();
-  }
+    background(0);
+    Engine.update(engine);
+    box1.display();
+    box2.display();
+    box3.display();
+   ground1.display();
 }

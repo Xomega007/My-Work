@@ -1,6 +1,6 @@
 h1 {
     color: brown;
-    text-shadow: 2px 2px 5px blue;
+    margin: 100px;
 }
 
 * {
@@ -23,4 +23,24 @@ h1 {
 }
 body{
     background: repeating-radial-gradient( red,gold,silver)
+}
+a:link{
+    color: black;
+}
+a:visited{
+    color: white
+}
+.item:hover p{
+    color: purple;
+    opacity: 1;
+}
+.item:hover img{
+    opacity: 0.33;
+}
+.item p{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    opacity: 0.033;
+    transform: translate(-50%,-50%);
 }
